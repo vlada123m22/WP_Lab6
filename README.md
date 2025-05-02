@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
 # 🎬 Movie Tracker
 
 A simple, responsive movie tracking web app built with **React** and **Bootstrap**. Users can add, like, filter, and delete movies, with support for **dark/light theme toggling** and **localStorage** for data persistence. Designed for local use and deployment via GitHub Pages.
@@ -46,11 +32,13 @@ A simple, responsive movie tracking web app built with **React** and **Bootstrap
 │       └── MovieList.jsx
 ```
 
-## Github pages link: 
+## Github pages link: https://vlada123m22.github.io/WP_Lab6/
+##Results:
+![image](https://github.com/user-attachments/assets/33d89de3-b9c5-47ae-bd99-288aa6739868)
+
 
 ## 📝 Notes
 
 - Movie data and theme are saved to `localStorage`.
 - Filtering is case-insensitive.
 - Built using functional components and React hooks.
->>>>>>> 416dafaef44041ba09683a09c237792cbdb7a490

@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useEffect, useState } from "react";
+import MovieForm from "./components/MovieForm.jsx";
+import MovieList from "./components/MovieList.jsx";
+import { Container, Button } from "react-bootstrap";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    document.body.className = darkMode ? "dark" : "light";
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("movies");
+    if (saved) setMovies(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("movies", JSON.stringify(movies));
+  }, [movies]);
+
+  const addMovie = (movie) => setMovies([...movies, movie]);
+  const deleteMovie = (id) => setMovies(movies.filter((m) => m.id !== id));
+  const toggleLike = (id) =>
+    setMovies(
+      movies.map((m) =>
+        m.id === id ? { ...m, liked: !m.liked } : m
+      )
+    );
+
+  const filteredMovies = movies.filter((m) =>
+    m.title.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Container className="py-4">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h1>Movie Tracker</h1>
+        <Button onClick={() => setDarkMode(!darkMode)}>
+          Toggle {darkMode ? "Light" : "Dark"} Mode
+        </Button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+      <MovieForm onAdd={addMovie} setFilter={setFilter} />
+      <MovieList
+        movies={filteredMovies}
+        onDelete={deleteMovie}
+        onLike={toggleLike}
+      />
+    </Container>
+  );
+};
+
+export default App;

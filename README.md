@@ -33,7 +33,7 @@ A simple, responsive movie tracking web app built with **React** and **Bootstrap
 ```
 
 ## Github pages link: https://vlada123m22.github.io/WP_Lab6/
-##Results:
+## Results:
 ![image](https://github.com/user-attachments/assets/33d89de3-b9c5-47ae-bd99-288aa6739868)
 
 
